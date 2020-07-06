@@ -1,0 +1,25 @@
+// ==UserScript==
+// @name         New Userscript
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  try to take over the world!
+// @author       You
+// @match        https://he.symbolab.com/*
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    setInterval(() => {
+        $('.solution_inside_box').toArray().forEach(solutionInsideBox => {
+            solutionInsideBox.classList.remove('solution_inside_box');
+            solutionInsideBox.classList.add('solution_step_definition_main');
+        });
+
+        $('.locked-step').parent().toArray().forEach(lockedStepLink => {
+            lockedStepLink.innerHTML = '<span class="print-hide showStepsButton"></span><span class="print-hide showButtonText">הראה הגדרה</span>';
+        });
+    }, 300);
+
+})();
